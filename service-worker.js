@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/hospital-thesis-2019/precache-manifest.bc1c6662f038a689f6a1d40ae7470124.js"
+  "/hospital-thesis-2019/precache-manifest.b2371c287ad06445e4c82164941f3916.js"
 );
 
 self.addEventListener('message', (event) => {
