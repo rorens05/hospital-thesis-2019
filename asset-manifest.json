@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/hospital-thesis-2019/static/css/main.b494e291.chunk.css",
-    "main.js": "/hospital-thesis-2019/static/js/main.0b1b4b38.chunk.js",
-    "main.js.map": "/hospital-thesis-2019/static/js/main.0b1b4b38.chunk.js.map",
-    "runtime~main.js": "/hospital-thesis-2019/static/js/runtime~main.f02a7dff.js",
-    "runtime~main.js.map": "/hospital-thesis-2019/static/js/runtime~main.f02a7dff.js.map",
-    "static/css/2.8952d5c3.chunk.css": "/hospital-thesis-2019/static/css/2.8952d5c3.chunk.css",
-    "static/js/2.d4ca45c1.chunk.js": "/hospital-thesis-2019/static/js/2.d4ca45c1.chunk.js",
-    "static/js/2.d4ca45c1.chunk.js.map": "/hospital-thesis-2019/static/js/2.d4ca45c1.chunk.js.map",
-    "index.html": "/hospital-thesis-2019/index.html",
-    "precache-manifest.663efb6fc411e422d6dd703cb9e38853.js": "/hospital-thesis-2019/precache-manifest.663efb6fc411e422d6dd703cb9e38853.js",
-    "service-worker.js": "/hospital-thesis-2019/service-worker.js",
-    "static/css/2.8952d5c3.chunk.css.map": "/hospital-thesis-2019/static/css/2.8952d5c3.chunk.css.map",
-    "static/css/main.b494e291.chunk.css.map": "/hospital-thesis-2019/static/css/main.b494e291.chunk.css.map",
-    "static/media/mdb.css": "/hospital-thesis-2019/static/media/arrow_right.8ef6a08c.svg",
-    "static/media/index.css": "/hospital-thesis-2019/static/media/bg.63981add.jpg",
-    "static/media/doh.png": "/hospital-thesis-2019/static/media/doh.dd8a5c42.png",
-    "static/media/logo.png": "/hospital-thesis-2019/static/media/logo.395a6f27.png"
+    "main.css": "/static/css/main.3882aeba.chunk.css",
+    "main.js": "/static/js/main.c4194928.chunk.js",
+    "main.js.map": "/static/js/main.c4194928.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/css/2.d5ec4922.chunk.css": "/static/css/2.d5ec4922.chunk.css",
+    "static/js/2.d4ca45c1.chunk.js": "/static/js/2.d4ca45c1.chunk.js",
+    "static/js/2.d4ca45c1.chunk.js.map": "/static/js/2.d4ca45c1.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.63ada0894ef6e26c6db2944641c05529.js": "/precache-manifest.63ada0894ef6e26c6db2944641c05529.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.d5ec4922.chunk.css.map": "/static/css/2.d5ec4922.chunk.css.map",
+    "static/css/main.3882aeba.chunk.css.map": "/static/css/main.3882aeba.chunk.css.map",
+    "static/media/mdb.css": "/static/media/arrow_right.8ef6a08c.svg",
+    "static/media/index.css": "/static/media/bg.63981add.jpg",
+    "static/media/doh.png": "/static/media/doh.dd8a5c42.png",
+    "static/media/logo.png": "/static/media/logo.395a6f27.png"
   }
 }
