@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/hospital-thesis-2019/static/css/main.b494e291.chunk.css",
+    "main.js": "/hospital-thesis-2019/static/js/main.c75badd9.chunk.js",
+    "main.js.map": "/hospital-thesis-2019/static/js/main.c75badd9.chunk.js.map",
+    "runtime~main.js": "/hospital-thesis-2019/static/js/runtime~main.f02a7dff.js",
+    "runtime~main.js.map": "/hospital-thesis-2019/static/js/runtime~main.f02a7dff.js.map",
+    "static/css/2.8952d5c3.chunk.css": "/hospital-thesis-2019/static/css/2.8952d5c3.chunk.css",
+    "static/js/2.d4ca45c1.chunk.js": "/hospital-thesis-2019/static/js/2.d4ca45c1.chunk.js",
+    "static/js/2.d4ca45c1.chunk.js.map": "/hospital-thesis-2019/static/js/2.d4ca45c1.chunk.js.map",
+    "index.html": "/hospital-thesis-2019/index.html",
+    "precache-manifest.ef8396de5dbaccab4f67126fc53067a7.js": "/hospital-thesis-2019/precache-manifest.ef8396de5dbaccab4f67126fc53067a7.js",
+    "service-worker.js": "/hospital-thesis-2019/service-worker.js",
+    "static/css/2.8952d5c3.chunk.css.map": "/hospital-thesis-2019/static/css/2.8952d5c3.chunk.css.map",
+    "static/css/main.b494e291.chunk.css.map": "/hospital-thesis-2019/static/css/main.b494e291.chunk.css.map",
+    "static/media/mdb.css": "/hospital-thesis-2019/static/media/arrow_right.8ef6a08c.svg",
+    "static/media/index.css": "/hospital-thesis-2019/static/media/bg.63981add.jpg",
+    "static/media/doh.png": "/hospital-thesis-2019/static/media/doh.dd8a5c42.png",
+    "static/media/logo.png": "/hospital-thesis-2019/static/media/logo.395a6f27.png"
+  }
+}
