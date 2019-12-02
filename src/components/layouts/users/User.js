@@ -43,7 +43,7 @@ export class Patient extends Component {
 						<div className='header'>
 							<span>
 								<img src={images.USER_ICON} alt='patient' className='pageIcon' /> User Record
-								<MDBBtn
+								{ window.localStorage.getItem('ROLE') != 'NURSE' && <MDBBtn
 									color='primary my-btn float-right'
 									size='sm'
 									onClick={() => {
@@ -51,7 +51,7 @@ export class Patient extends Component {
 									}}
 								>
 									Add New User
-								</MDBBtn>
+								</MDBBtn>}
 							</span>
 						</div>
 						<div className='table-container'>
@@ -68,8 +68,8 @@ export class Patient extends Component {
 									</tr>
 								</thead>
 								<tbody>
-									{this.state.data.map((item) => {
-										return <PatientItem data={item} key={item.id} />;
+									{this.state.data.map((item, index) => {
+										return <PatientItem data={item} key={item.id} index={index} />;
 									})}
 								</tbody>
 							</table>

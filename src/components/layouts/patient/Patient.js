@@ -73,6 +73,7 @@ export class Patient extends Component {
 										<th>Gender</th>
 										<th>Residential Address</th>
 										<th>Contact Number</th>
+										<th>Family Position</th>
 										<th>Options</th>
 									</tr>
 								</thead>

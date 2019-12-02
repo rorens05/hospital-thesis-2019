@@ -23,7 +23,6 @@ export class Edit extends Component {
     let response = await new PatientAPI().update(data);
     console.log(response)
     window.location.replace(`/users/${this.props.match.params.id}`)
-
   }
 
 	render() {

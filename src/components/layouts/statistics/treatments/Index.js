@@ -24,7 +24,10 @@ export class Index extends Component {
 			isBar: false,
 			isMale: true,
 			isFemale: true,
-			ageAll: false,
+			age1: true,
+			age2: true,
+			age3: true,
+			age4: true,
 			data: {
 				general: [],
 				maternal: [],
@@ -115,11 +118,31 @@ export class Index extends Component {
 					this.updateShowData();
 				});
 				break;
+			case 'ONE':
+				this.setState({ age1: !this.state.age1 }, () => {
+					this.updateShowData();
+				});
+				break;
+			case 'TWO':
+				this.setState({ age2: !this.state.age2 }, () => {
+					this.updateShowData();
+				});
+				break;
+			case 'THREE':
+				this.setState({ age3: !this.state.age3 }, () => {
+					this.updateShowData();
+				});
+				break;
+			case 'FOUR':
+				this.setState({ age4: !this.state.age4 }, () => {
+					this.updateShowData();
+				});
+				break;
 		}
 	};
 
 	updateShowData() {
-		let { data, isMale, isFemale, patients } = this.state;
+		let { data, isMale, isFemale, patients, age1, age2, age3, age4 } = this.state;
 
 		console.log({ data, patients });
 		let showData = {};
@@ -178,10 +201,214 @@ export class Index extends Component {
 		console.log({ showData, isMale, isFemale });
 
 
+		let general = []
+		let maternal = []
+		let tuberculosis = []
+		let dental = []
+		let immunation = []
+
+		if(age1 && age2 && age3 && age4){
+			showData = showData
+		}else{
+			if(age1){
+				console.log("this is age 1")
+				let startDate = new Date()
+				startDate.setFullYear((new Date().getFullYear()) - 1)			
+				let endDate = new Date()
+				endDate.setFullYear((new Date().getFullYear()))	
+
+				showData.general.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						general.push(item)
+					}
+				})
+
+				showData.maternal.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						maternal.push(item)
+					}
+				})
+
+				showData.dental.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						dental.push(item)
+					}
+				})
+
+				showData.tuberculosis.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						tuberculosis.push(item)
+					}
+				})
+
+				showData.immunation.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						immunation.push(item)
+					}
+				})
+			}
+			
+			if(age2){
+				console.log("this is age 2")
+				let startDate = new Date()
+				startDate.setFullYear((new Date().getFullYear()) - 20)			
+				let endDate = new Date()
+				endDate.setFullYear((new Date().getFullYear()) - 1)	
+
+				showData.general.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						general.push(item)
+					}
+				})
+
+				showData.maternal.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						maternal.push(item)
+					}
+				})
+
+				showData.dental.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						dental.push(item)
+					}
+				})
+
+				showData.tuberculosis.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						tuberculosis.push(item)
+					}
+				})
+
+				showData.immunation.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						immunation.push(item)
+					}
+				})
+			}
+			
+			if(age3){
+				console.log("this is age 2")
+				let startDate = new Date()
+				startDate.setFullYear((new Date().getFullYear()) - 60)			
+				let endDate = new Date()
+				endDate.setFullYear((new Date().getFullYear()) - 20)	
+
+				showData.general.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						general.push(item)
+					}
+				})
+
+				showData.maternal.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						maternal.push(item)
+					}
+				})
+
+				showData.dental.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						dental.push(item)
+					}
+				})
+
+				showData.tuberculosis.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						tuberculosis.push(item)
+					}
+				})
+
+				showData.immunation.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						immunation.push(item)
+					}
+				})
+			}
+			
+			if(age4){
+				console.log("this is age 2")
+				let startDate = new Date()
+				startDate.setFullYear((new Date().getFullYear()) - 200)			
+				let endDate = new Date()
+				endDate.setFullYear((new Date().getFullYear()) - 60)	
+
+				showData.general.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						general.push(item)
+					}
+				})
+
+				showData.maternal.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						maternal.push(item)
+					}
+				})
+
+				showData.dental.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						dental.push(item)
+					}
+				})
+
+				showData.tuberculosis.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						tuberculosis.push(item)
+					}
+				})
+
+				showData.immunation.map(item => {
+					let patient = this.getPatientInfo(item.patient_id);					
+					let birthday = new Date(patient.birthday)
+					if(birthday > startDate && birthday < endDate){
+						immunation.push(item)
+					}
+				})
+			}
+			showData = {
+				general, maternal, tuberculosis, immunation, dental
+			}
+		}
 
 
-
-
+		console.log({showData, age1, age2, age3, general, maternal, dental, tuberculosis, immunation})
+		
 		this.setState(
 			{
 				showData
@@ -343,75 +570,42 @@ export class Index extends Component {
 						type='checkbox'
 						name='checkbox'
 						className='ml-3 mr-2'
-						checked={this.state.ageAll}
-						onChange={this.handleChartChange}
-					/>
-					<label>All</label>
-					<input
-						type='checkbox'
-						name='checkbox'
-						className='ml-3 mr-2'
-						checked={this.state.ageAll}
-						onChange={this.handleChartChange}
+						checked={this.state.age1}
+						onChange={() => {
+							this.updateGender('ONE');
+						}}
 					/>
 					<label>0-12 Months</label>
 					<input
 						type='checkbox'
 						name='checkbox'
 						className='ml-3 mr-2'
-						checked={this.state.ageAll}
-						onChange={this.handleChartChange}
+						checked={this.state.age2}
+						onChange={() => {
+							this.updateGender('TWO');
+						}}
 					/>
-					<label>1-5 Years</label>
+					<label>1-20 Years</label>
 					<input
 						type='checkbox'
 						name='checkbox'
 						className='ml-3 mr-2'
-						checked={this.state.ageAll}
-						onChange={this.handleChartChange}
+						checked={this.state.age3}
+						onChange={() => {
+							this.updateGender('THREE');
+						}}
 					/>
-					<label>6-10 Years</label>
+					<label>21-60 Years</label>
 					<input
 						type='checkbox'
 						name='checkbox'
 						className='ml-3 mr-2'
-						checked={this.state.ageAll}
-						onChange={this.handleChartChange}
+						checked={this.state.age4}
+						onChange={() => {
+							this.updateGender('FOUR');
+						}}
 					/>
-					<label>10-14 Years</label>
-					<input
-						type='checkbox'
-						name='checkbox'
-						className='ml-3 mr-2'
-						checked={this.state.ageAll}
-						onChange={this.handleChartChange}
-					/>
-					<label>15-19 Years</label>
-
-					<input
-						type='checkbox'
-						name='checkbox'
-						className='ml-3 mr-2'
-						checked={this.state.ageAll}
-						onChange={this.handleChartChange}
-					/>
-					<label>20-49 Years</label>
-					<input
-						type='checkbox'
-						name='checkbox'
-						className='ml-3 mr-2'
-						checked={this.state.ageAll}
-						onChange={this.handleChartChange}
-					/>
-					<label>50-60 Years</label>
-					<input
-						type='checkbox'
-						name='checkbox'
-						className='ml-3 mr-2'
-						checked={this.state.ageAll}
-						onChange={this.handleChartChange}
-					/>
-					<label>60 Years and up</label>
+					<label>61 Years and above</label>
 				</MDBFormInline>
 				<hr />
 				{!this.state.isLoading && (
