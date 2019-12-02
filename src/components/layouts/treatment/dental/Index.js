@@ -32,6 +32,7 @@ export class Index extends Component {
 			return {
 				id: item.id,
 				family_no: patientInfo.family.serial_number,
+				patient_code: patientInfo.patient.category,
 				name: patientInfo.patient.first_name + ' ' + patientInfo.patient.last_name,
 				mode: item.mode,
 				nature: item.nature,

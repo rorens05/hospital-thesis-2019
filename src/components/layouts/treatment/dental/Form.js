@@ -13,8 +13,8 @@ export class Form extends Component {
 				health_care_provider: '',
 				last_dentist: '',
 				letter_number: '',
-				mode: '',
-				nature: '',
+				mode: 'Walk-in',
+				nature: 'New Consultation/Case',
 				patient_id: 2,
 				performed_lab_test: '',
 				referred_by: '',
@@ -35,10 +35,10 @@ export class Form extends Component {
 	};
 
 	componentDidUpdate = (prevProps) => {
-		if(prevProps.data != this.props.data){
-			this.setState({patient: this.props.data})
-		} 
-	}
+		if (prevProps.data != this.props.data) {
+			this.setState({ patient: this.props.data });
+		}
+	};
 
 	render() {
 		let { patient } = this.state;
@@ -84,7 +84,7 @@ export class Form extends Component {
 					<MDBRow className=''>
 						<MDBCol sm='12'>
 							<MDBInput
-								type='date'
+								type='datetime-local'
 								label='Date of Consultation'
 								className='input-date'
 								value={patient.consultation_date}
@@ -116,10 +116,13 @@ export class Form extends Component {
 					</MDBRow>
 					<MDBRow className=''>
 						<MDBCol sm='6'>
-							<MDBInput type='text' label='Referred by'
+							<MDBInput
+								type='text'
+								label='Referred by'
 								value={patient.referred_by}
 								onChange={this.handleOnChange}
-								name={'referred_by'} />
+								name={'referred_by'}
+							/>
 						</MDBCol>
 					</MDBRow>
 					<MDBRow>
@@ -127,13 +130,16 @@ export class Form extends Component {
 							<label htmlFor=''>
 								<small className='text-primary font-weight-light'>Nature of Visit</small>
 							</label>
-							
-              <select
+
+							<select
 								className='custom-select default-select'
 								onChange={this.handleOnChange}
 								name={'nature'}
 							>
-								<option value='New Consultation/Case' selected={patient.nature == 'New Consultation/Case'}>
+								<option
+									value='New Consultation/Case'
+									selected={patient.nature == 'New Consultation/Case'}
+								>
 									New Consultation/Case
 								</option>
 								<option value='New Admission' selected={patient.nature == 'New Admission'}>
@@ -147,38 +153,62 @@ export class Form extends Component {
 							<br />
 						</MDBCol>
 						<MDBCol sm='6'>
-							<MDBInput type='text' label='Last dentist'
+							<MDBInput
+								type='text'
+								label='Last dentist'
 								value={patient.last_dentist}
 								onChange={this.handleOnChange}
-								name={'last_dentist'} />
+								name={'last_dentist'}
+							/>
 						</MDBCol>
 					</MDBRow>
-          <MDBRow>
-            <MDBCol sm="12" style={{padding: '10%'}}>
-            <img src={images.TEETH_STRUCTURE} alt={'teeth'} style={{ width: '80%' }} />
-            </MDBCol>
-          </MDBRow>
+					<MDBRow>
+						<MDBCol sm='12' style={{ padding: '10%' }}>
+							<img src={images.TEETH_STRUCTURE} alt={'teeth'} style={{ width: '80%' }} />
+						</MDBCol>
+					</MDBRow>
 					<MDBRow className=''>
 						<MDBCol sm='12'>
-							<MDBInput type='text' label='Teeth Letter/number' 
+							<MDBInput
+								type='text'
+								label='Teeth Letter/Number'
 								value={patient.letter_number}
 								onChange={this.handleOnChange}
-								name={'letter_number'}  />
+								name={'letter_number'}
+							/>
 						</MDBCol>
 					</MDBRow>
 					<MDBRow className=''>
 						<MDBCol sm='12'>
-							<MDBInput type='text' label='Name of Health Provider' 
+							<MDBInput
+								type='text'
+								label='Remarks'
+								value={patient.remarks}
+								onChange={this.handleOnChange}
+								name={'remarks'}
+							/>
+						</MDBCol>
+					</MDBRow>
+					<MDBRow className=''>
+						<MDBCol sm='12'>
+							<MDBInput
+								type='text'
+								label='Name of Health Provider'
 								value={patient.health_care_provider}
 								onChange={this.handleOnChange}
-								name={'health_care_provider'}  />
+								name={'health_care_provider'}
+							/>
 						</MDBCol>
 					</MDBRow>
 					<MDBBtn
 						size='lg'
 						className='mt-3'
 						color='primary'
-            onClick={() => this.props.submit(this.state.patient)}					
+						onClick={() => {
+							let {patient} = this.state
+							patient.consultation_date = new Date(patient.consultation_date).toString()
+							this.props.submit(patient);
+						}}
 					>
 						SAVE
 					</MDBBtn>

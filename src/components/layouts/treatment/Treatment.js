@@ -52,7 +52,7 @@ export default class Index extends Component {
       data.push({
         family_no: this.getSerialNumber(familyRes, patient.family_id).serial_number,
         name: patient.first_name + " " + patient.last_name,
-        mode: g.remarks,
+        mode: g.mode,
         type: 'DENTAL',
         nature: g.nature,
         date: g.createdAt
@@ -96,6 +96,14 @@ export default class Index extends Component {
     })
 
     console.log(data)
+    data = data.sort((a, b) => {
+      console.log({a, b, date: new Date(a.date) > new Date(b.date)})
+      if(new Date(a.date) > new Date(b.date)){
+        return -1
+      }else{
+        return 1
+      }
+    })
     this.setState({data})
   };
 

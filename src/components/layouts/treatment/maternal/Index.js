@@ -35,6 +35,7 @@ export default class Index extends Component {
       return {
         id: item.id,
         family_no:  patientInfo.family ? patientInfo.family.serial_number : "",
+        patient_code: patientInfo.patient ? patientInfo.patient.category : "",
         name: patientInfo.patient ? patientInfo.patient.first_name + " " + patientInfo.patient.last_name : "",
         birth_outcome: item.birth_outcome,
         type_of_delivery: item.type_of_delivery,
@@ -78,8 +79,7 @@ export default class Index extends Component {
           <div className="content">
             <div className="header">
               <span>
-              <img src={images.MATERNAL_ICON} alt="patient" className="pageIcon"/> Patient Record 
-
+              <img src={images.MATERNAL_ICON} alt="patient" className="pageIcon"/> 
                 Maternal Checkup Record 
                 {window.localStorage.getItem("ROLE") != "NURSE" &&<MDBBtn 
                   size="sm" 

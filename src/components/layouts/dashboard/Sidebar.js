@@ -15,7 +15,7 @@ import statisticsIcon from './../../../assets/96px/Statistics\ 96.png'
 import backupIcon from './../../../assets/96px/Backup&Restore\ 96.png'
 import userIcon from './../../../assets/96px/User\ 96.png'
 import aboutIcon from './../../../assets/96px/About\ 96.png'
-import print from './../../../assets/96px/print.jpg'
+import print from './../../../assets/96px/Documents\ 96.png'
 
 export class Sidebar extends Component {
 

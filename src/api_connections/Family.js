@@ -1,6 +1,7 @@
 import Base from "./Base";
 import constants from "../constants/constants";
 import RequestMethods from "../constants/RequestMethods";
+import Patient from './Patient'
 
 export default class Family extends Base{
   async fetchAll(){
@@ -16,6 +17,11 @@ export default class Family extends Base{
   }
 
   async destroy(id){
+    (await new Patient().fetchAll()).data.data.map(async(p) => {
+      if(p.family_id == id){
+        await new Patient().destroy(p.id)
+      }
+    })
     return this.sendRequest(`${constants.FAMILIES}/${id}` ,RequestMethods.DELETE)
   }
   async update(data){

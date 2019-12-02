@@ -29,11 +29,13 @@ export class Login extends Component {
     if(res.data.status === "error"){
       alert("Invalid username or password")
     }else{
-      if(this.state.email == "nurse@ruralHealth.com"){
-        localStorage.setItem("ROLE", "NURSE")
-      }else{
-        localStorage.setItem("ROLE", "ADMIN")
-      }
+      console.log(res.data)
+      // if(this.state.email == "nurse@ruralHealth.com"){
+      //   localStorage.setItem("ROLE", "NURSE")
+      // }else{
+      //   localStorage.setItem("ROLE", "ADMIN")
+      // }
+      localStorage.setItem("ROLE", res.data.message.role.toUpperCase())
       localStorage.setItem("AUTH", res.data.message.Authorization)
       window.location.replace("/")
     }

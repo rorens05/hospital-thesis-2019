@@ -37,6 +37,7 @@ export default class Index extends Component {
 
 	componentDidMount = async () => {
 		let generalRes = await new General().fetch(this.props.match.params.id);
+		console.log({generalRes})
 		let general = generalRes.data.data;
 		let patientRes = await new Patient().fetch(general.patient_id);
 		let patient = patientRes.data.data;
@@ -89,7 +90,8 @@ export default class Index extends Component {
 										</th>
 										<th colSpan='2' className='pl-3'>
 											Family Serial Number:{' '}
-											<span className='ml-5'>{this.state.family.serial_number}</span>
+											<span className='ml-5'>{this.state.family.serial_number}</span><br/>
+											Patient code: <span className='pl-5 ml-5'>{this.state.patient.category}</span>
 											<br />
 										</th>
 									</tr>
@@ -129,13 +131,19 @@ export default class Index extends Component {
 									</tr>
 									<tr>
 										<td className='info-label'>Date of Consultation:</td>
-										<td className='info-data'>{new Date(this.state.general.consultation_date).toDateString()}</td>
+										<td className='info-data'>
+											{new Date(this.state.general.consultation_date).toDateString()}
+										</td>
 										<td className='info-label'>Referred to:</td>
 										<td className='info-data'>{this.state.general.referred_to}</td>
 									</tr>
 									<tr>
 										<td className='info-label'>Consultation Time:</td>
-										<td className='info-data'>{new Date(this.state.general.consultation_date).toDateString()}</td>
+										<td className='info-data'>
+											{ ("0" + new Date(this.state.general.consultation_date).getHours()).slice(-2) +
+												':' +
+												("0" + new Date(this.state.general.consultation_date).getHours()).slice(-2)}
+										</td>
 										<td className='info-label'>Referred by:</td>
 										<td className='info-data'>{this.state.general.referred_by}</td>
 									</tr>
@@ -150,7 +158,7 @@ export default class Index extends Component {
 										<td rowSpan='2' style={{ textAlign: 'center' }}>
 											<img src={images.TEETH_STRUCTURE} alt={'teeth'} style={{ width: '80%' }} />
 										</td>
-										<th>Letter number</th>
+										<th>Teeth Letter/Number</th>
 										<td>{this.state.general.letter_number}</td>
 									</tr>
 									<tr>
@@ -169,8 +177,13 @@ export default class Index extends Component {
 								Print
 							</MDBBtn>
 							{window.localStorage.getItem('ROLE') != 'NURSE' && (
-								<MDBBtn size='sm' color='primary' onClick={() => window.location.href = `/treatment/dental/${this.props.match.params.id}/edit`}>
-									 Edit
+								<MDBBtn
+									size='sm'
+									color='primary'
+									onClick={() =>
+										(window.location.href = `/treatment/dental/${this.props.match.params.id}/edit`)}
+								>
+									Edit
 								</MDBBtn>
 							)}
 						</MDBContainer>

@@ -51,7 +51,7 @@ export class Form extends Component {
 		return (
 			<MDBContainer className='patient-form-container'>
 				<form className='default-form'>
-					<h3 className='h3-header'>General checkup</h3>
+					<h3 className='h3-header'>Maternal Checkup</h3>
 					<PersonalInformation
 						onChange={(id) => {
 							let { patient } = this.state;
@@ -146,9 +146,9 @@ export class Form extends Component {
 							<MDBInput
 								type='date'
 								label='Date'
-								value={patient.createdAt}
+								value={patient.updatedAt}
 								onChange={this.handleOnChange}
-								name={'createdAt'}
+								name={'updatedAt'}
 							/>
 						</MDBCol>
 						<MDBCol sm='6'>

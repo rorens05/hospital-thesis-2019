@@ -43,10 +43,12 @@ export default class Index extends Component {
       let selectedPatient = null;
       let name = "NO NAME"
       let family_no = "NO FAMILY NO"
+      let patient_code = ""
 
       patientRes.forEach(patient => {
         if(item.patient_id == patient.id){
           name = patient.first_name + " " + patient.last_name
+          patient_code = patient.category
           selectedPatient = patient
         }
       });
@@ -59,6 +61,7 @@ export default class Index extends Component {
       return {
           id: item.id,
           family_no,
+          patient_code,
           name,
           mode: item.mode,
           type: item.type_of_consultation,

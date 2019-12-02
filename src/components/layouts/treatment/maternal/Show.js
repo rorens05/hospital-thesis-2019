@@ -56,6 +56,7 @@ export default class Index extends Component {
       first_name,
       last_name,
       middle_name,
+      category,
       residential_address,
       sex,
       suffix,
@@ -111,6 +112,7 @@ export default class Index extends Component {
                     </th>
                     <th colSpan="2" className="pl-3">
                       Family Serial Number: <span className="ml-5">{serial_number}</span><br/>
+											Patient code: <span className='pl-5 ml-5'>{category}</span>
                     </th> 
                   </tr>
                   <tr>

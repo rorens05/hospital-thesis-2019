@@ -248,10 +248,16 @@ export default class Form extends Component {
 									Annuled
 								</option>
 								<option
-									value='Wodow/er'
-									selected={this.state.data.civil_status == 'Wodow/er' ? true : false}
+									value='Widower'
+									selected={this.state.data.civil_status == 'Widower' ? true : false}
 								>
 									Widower
+								</option>
+								<option
+									value='Widow'
+									selected={this.state.data.civil_status == 'Widow' ? true : false}
+								>
+									Widow
 								</option>
 								<option
 									value='Separated'

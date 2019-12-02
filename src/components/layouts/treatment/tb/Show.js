@@ -72,7 +72,8 @@ export default class Index extends Component {
 										</th>
 										<th colSpan='2' className='pl-3'>
 											Family Serial Number:{' '}
-											<span className='ml-5'>{this.state.family.serial_number}</span>
+											<span className='ml-5'>{this.state.family.serial_number}</span><br/>
+											Patient code: <span className='pl-5 ml-5'>{this.state.patient.category}</span>
 											<br />
 										</th>
 									</tr>

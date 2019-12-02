@@ -25,7 +25,8 @@ export default class Table extends Component {
 		}).map((item, index) => {
 			return (
 				<tr key={index}>
-					{Object.values(item).map((col) => {
+					{Object.values(item).map((col, index) => {
+						if(index == 0) return
 						return <td>{col}</td>;
 					})}
 					<td>
@@ -55,8 +56,8 @@ export default class Table extends Component {
 			<table>
 				<thead>
 					<tr>
-						<th>ID</th>
 						<th>Family No.</th>
+						<th>Patient Code</th>
 						<th>Patient Name</th>
 						<th>Mode of Transaction</th>
 						<th>Type of Consultation</th>

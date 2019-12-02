@@ -120,6 +120,7 @@ export default class FamilyInformation extends Component {
 								<thead>
 									<tr>
 										<th>Family Code</th>
+										<th>Patient code</th>
 										<th>Last Name</th>
 										<th>First Name</th>
 										<th>Middle Name</th>
@@ -127,6 +128,7 @@ export default class FamilyInformation extends Component {
 										<th>Gender</th>
 										<th>Residential Address</th>
 										<th>Contact Number</th>
+										<th>Family Position</th>
 										<th>Options</th>
 									</tr>
 								</thead>

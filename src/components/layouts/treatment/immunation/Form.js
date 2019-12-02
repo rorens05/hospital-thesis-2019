@@ -10,6 +10,7 @@ export class Form extends Component {
 				patient_id: '',
 				date_of_consultation: new Date().toJSON().slice(0, 10),
 				bgc_date: new Date().toJSON().slice(0, 10),
+				updatedAt: new Date().toJSON().slice(0, 10),
 				bgc_doses: 1,
 				birth_height: "",
 				birth_weight: "",
@@ -92,9 +93,9 @@ export class Form extends Component {
 								label='Date of Birth'
 								className='input-date'
 								defaultValue='1999-07-21'
-								value={patient.bgc_date}
+								value={patient.updatedAt}
 								onChange={this.handleOnChange}
-								name={'bgc_date'}
+								name={'updatedAt'}
 							/>
 						</MDBCol>
 						<MDBCol sm='6'>

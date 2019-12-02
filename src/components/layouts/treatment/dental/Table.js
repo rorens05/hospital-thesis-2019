@@ -29,7 +29,8 @@ export default class Table extends Component {
 			.map((item) => {
 				return (
 					<tr>
-						{Object.values(item).map((col) => {
+						{Object.values(item).map((col, index) => {
+							if(index == 0) return
 							return <td>{col}</td>;
 						})}
 						<td>
@@ -43,7 +44,7 @@ export default class Table extends Component {
 									}}
 								>
 									<span className='delete-icon'>
-										<FontAwesomeIcon icon={faTrash} />{' '}
+										<FontAwesomeIcon icon={faTrash} />
 									</span>
 								</ConfirmDialog>
 							)}
@@ -51,7 +52,7 @@ export default class Table extends Component {
 								className='edit-icon'
 								onClick={() => (window.location.href = '/treatment/dental/' + item.id)}
 							>
-								<FontAwesomeIcon icon={faEdit} />{' '}
+								<FontAwesomeIcon icon={faEdit} />
 							</span>
 						</td>
 					</tr>
@@ -64,8 +65,8 @@ export default class Table extends Component {
 			<table>
 				<thead>
 					<tr>
-						<th>#</th>
 						<th>Family No.</th>
+						<th>Patient Code</th>
 						<th>Patient Name</th>
 						<th>Mode of Transaction</th>
 						<th>Nature of Visit</th>

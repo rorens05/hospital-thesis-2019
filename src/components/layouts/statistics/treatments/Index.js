@@ -6,6 +6,7 @@ import Maternal from '../../../../api_connections/maternal';
 import Tb from '../../../../api_connections/Tb';
 import Immunation from '../../../../api_connections/Immunation';
 import Dental from '../../../../api_connections/Dental';
+import Patient from '../../../../api_connections/Patient';
 
 export class Index extends Component {
 	constructor(props) {
@@ -18,8 +19,12 @@ export class Index extends Component {
 				immunation: true,
 				dental: true
 			},
+			patients: [],
 			isLoading: false,
 			isBar: false,
+			isMale: true,
+			isFemale: true,
+			ageAll: false,
 			data: {
 				general: [],
 				maternal: [],
@@ -87,26 +92,125 @@ export class Index extends Component {
 		let tuberculosis = (await new Tb().fetchAll()).data.data;
 		let immunation = (await new Immunation().fetchAll()).data.data;
 		let dental = (await new Dental().fetchAll()).data.data;
+		let patients = (await new Patient().fetchAll()).data.data;
 
 		this.setState({
 			data: { general, maternal, tuberculosis, immunation, dental },
-			showData: { general, maternal, tuberculosis, immunation, dental }
+			showData: { general, maternal, tuberculosis, immunation, dental },
+			patients
 		});
-
-		this.setupData()
-
+		this.setupData();
 		this.handleRenderBars();
 	};
 
-	setupData = () => {
-		Object.keys(this.state.showData).map(key=>{
-			this.updateData(key, this.state.showData[key])
-		})
+	updateGender = async (gender) => {
+		switch (gender) {
+			case 'MALE':
+				this.setState({ isMale: !this.state.isMale }, () => {
+					this.updateShowData();
+				});
+				break;
+			case 'FEMALE':
+				this.setState({ isFemale: !this.state.isFemale }, () => {
+					this.updateShowData();
+				});
+				break;
+		}
+	};
+
+	updateShowData() {
+		let { data, isMale, isFemale, patients } = this.state;
+
+		console.log({ data, patients });
+		let showData = {};
+
+		if (isMale && isFemale) {
+			showData = data;
+		} else {
+			if (isMale) {
+				let general = data.general.filter((item) => {
+					let patient = this.getPatientInfo(item.patient_id);
+					return patient.sex == 'Male';
+				});
+				let maternal = data.maternal.filter((item) => {
+					let patient = this.getPatientInfo(item.patient_id);
+					return patient.sex == 'Male';
+				});
+				let tuberculosis = data.tuberculosis.filter((item) => {
+					let patient = this.getPatientInfo(item.patient_id);
+					return patient.sex == 'Male';
+				});
+				let immunation = data.immunation.filter((item) => {
+					let patient = this.getPatientInfo(item.patient_id);
+					return patient.sex == 'Male';
+				});
+				let dental = data.dental.filter((item) => {
+					let patient = this.getPatientInfo(item.patient_id);
+					return patient.sex == 'Male';
+				});
+				showData = { general, maternal, tuberculosis, immunation, dental };
+			}
+			if (isFemale) {
+				let general = data.general.filter((item) => {
+					let patient = this.getPatientInfo(item.patient_id);
+					return patient.sex == 'Female';
+				});
+				let maternal = data.maternal.filter((item) => {
+					let patient = this.getPatientInfo(item.patient_id);
+					return patient.sex == 'Female';
+				});
+				let tuberculosis = data.tuberculosis.filter((item) => {
+					let patient = this.getPatientInfo(item.patient_id);
+					return patient.sex == 'Female';
+				});
+				let immunation = data.immunation.filter((item) => {
+					let patient = this.getPatientInfo(item.patient_id);
+					return patient.sex == 'Female';
+				});
+				let dental = data.dental.filter((item) => {
+					let patient = this.getPatientInfo(item.patient_id);
+					return patient.sex == 'Female';
+				});
+				showData = { general, maternal, tuberculosis, immunation, dental };
+			}
+		}
+
+		console.log({ showData, isMale, isFemale });
+
+
+
+
+
+
+		this.setState(
+			{
+				showData
+			},
+			() => {
+				this.setupData();
+				this.handleRenderBars();
+			}
+		);
 	}
+
+	getPatientInfo(id) {
+		let patient = {};
+		this.state.patients.map((p) => {
+			if (id == p.id) {
+				patient = p;
+			}
+		});
+		return patient;
+	}
+
+	setupData = () => {
+		Object.keys(this.state.showData).map((key) => {
+			this.updateData(key, this.state.showData[key]);
+		});
+	};
 
 	updateData = (key, response) => {
 		let data = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
-
 		response.map((g) => {
 			data[new Date(g.createdAt).getMonth()] = data[new Date(g.createdAt).getMonth()] + 1;
 		});
@@ -209,86 +313,102 @@ export class Index extends Component {
 					/>
 					<label>Line chart</label>
 				</MDBFormInline>
-				<h5 className='mt-3'>Other options</h5>
+				<h5 className='mt-3'>Gender options</h5>
 				<MDBFormInline>
-					<input type='checkbox' name='radio2' className='ml-3 mr-2' />
+					<input
+						type='checkbox'
+						checked={this.state.isMale}
+						name='radio2'
+						className='ml-3 mr-2'
+						onChange={() => {
+							this.updateGender('MALE');
+						}}
+					/>
 					<label>Male</label>
-					<input type='checkbox' name='radio2' className='ml-3 mr-2' />
+					<input
+						type='checkbox'
+						checked={this.state.isFemale}
+						name='radio2'
+						className='ml-3 mr-2'
+						onChange={() => {
+							this.updateGender('FEMALE');
+						}}
+					/>
 					<label>Female</label>
 				</MDBFormInline>
 
-				<h5 className='mt-3'>Chart type</h5>
+				<h5 className='mt-3'>Age options</h5>
 				<MDBFormInline>
 					<input
-						type='radio'
-						name='radio'
+						type='checkbox'
+						name='checkbox'
 						className='ml-3 mr-2'
-						checked={!this.state.ageAll}
+						checked={this.state.ageAll}
 						onChange={this.handleChartChange}
 					/>
 					<label>All</label>
 					<input
-						type='radio'
-						name='radio'
+						type='checkbox'
+						name='checkbox'
 						className='ml-3 mr-2'
-						checked={!this.state.ageAll}
+						checked={this.state.ageAll}
 						onChange={this.handleChartChange}
 					/>
 					<label>0-12 Months</label>
 					<input
-						type='radio'
-						name='radio'
+						type='checkbox'
+						name='checkbox'
 						className='ml-3 mr-2'
-						checked={!this.state.ageAll}
+						checked={this.state.ageAll}
 						onChange={this.handleChartChange}
 					/>
 					<label>1-5 Years</label>
 					<input
-						type='radio'
-						name='radio'
+						type='checkbox'
+						name='checkbox'
 						className='ml-3 mr-2'
-						checked={!this.state.ageAll}
+						checked={this.state.ageAll}
 						onChange={this.handleChartChange}
 					/>
 					<label>6-10 Years</label>
 					<input
-						type='radio'
-						name='radio'
+						type='checkbox'
+						name='checkbox'
 						className='ml-3 mr-2'
-						checked={!this.state.ageAll}
+						checked={this.state.ageAll}
 						onChange={this.handleChartChange}
 					/>
 					<label>10-14 Years</label>
 					<input
-						type='radio'
-						name='radio'
+						type='checkbox'
+						name='checkbox'
 						className='ml-3 mr-2'
-						checked={!this.state.ageAll}
+						checked={this.state.ageAll}
 						onChange={this.handleChartChange}
 					/>
 					<label>15-19 Years</label>
 
 					<input
-						type='radio'
-						name='radio'
+						type='checkbox'
+						name='checkbox'
 						className='ml-3 mr-2'
-						checked={!this.state.ageAll}
+						checked={this.state.ageAll}
 						onChange={this.handleChartChange}
 					/>
 					<label>20-49 Years</label>
 					<input
-						type='radio'
-						name='radio'
+						type='checkbox'
+						name='checkbox'
 						className='ml-3 mr-2'
-						checked={!this.state.ageAll}
+						checked={this.state.ageAll}
 						onChange={this.handleChartChange}
 					/>
 					<label>50-60 Years</label>
 					<input
-						type='radio'
-						name='radio'
+						type='checkbox'
+						name='checkbox'
 						className='ml-3 mr-2'
-						checked={!this.state.ageAll}
+						checked={this.state.ageAll}
 						onChange={this.handleChartChange}
 					/>
 					<label>60 Years and up</label>

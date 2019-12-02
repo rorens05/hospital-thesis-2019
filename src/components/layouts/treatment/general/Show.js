@@ -44,6 +44,7 @@ export default class Index extends Component {
 	render() {
 		let {
 			family_member,
+			category,
 			first_name,
 			last_name,
 			middle_name,
@@ -102,7 +103,8 @@ export default class Index extends Component {
 											<br />
 										</th>
 										<th colSpan='2' className='pl-3'>
-											Family Serial Number: <span className='ml-5'>{serial_number}</span>
+											Family Serial Number: <span className='ml-5'>{serial_number}</span><br/>
+											Patient code: <span className='pl-5 ml-5'>{category}</span>
 											<br />
 										</th>
 									</tr>
@@ -147,14 +149,14 @@ export default class Index extends Component {
 										<td className='info-data'>{referred_to}</td>
 									</tr>
 									<tr>
-										<td className='info-label'>Consultation Time:</td>
-										<td className='info-data'>{new Date(date_of_consultation).toDateString()}</td>
+										{/* <td className='info-label'>Consultation Time:</td>
+										<td className='info-data'>{new Date(date_of_consultation).toDateString()}</td> */}
+										<td className='info-label'>Blood pressure:</td>
+										<td className='info-data'>{blood_pressure}</td>
 										<td className='info-label'>Referred by:</td>
 										<td className='info-data'>{referred_by}</td>
 									</tr>
 									<tr>
-										<td className='info-label'>Blood pressure:</td>
-										<td className='info-data'>{blood_pressure}</td>
 										<td className='info-label' rowSpan='5'>
 											Reason(s) for Referral
 										</td>
@@ -178,9 +180,9 @@ export default class Index extends Component {
 										<td className='info-label'>Attending Provider:</td>
 										<td className='info-data'>{attending_provider}</td>
 									</tr>
-									<tr>
+									{/* <tr>
 										<th colSpan='4' className='p0 border-gray-1px' />
-									</tr>
+									</tr> */}
 
 									<tr>
 										<td className='info-label'>Nature of Visit:</td>
@@ -196,36 +198,36 @@ export default class Index extends Component {
 										<td className='info-label'>Type of Consultation:</td>
 										<td className='info-data'>{type_of_consultation}</td>
 									</tr>
-									<tr>
+									{/* <tr>
 										<th colSpan='4' className='p0 border-gray-1px' />
-									</tr>
+									</tr> */}
 									<tr>
 										<td className='info-label'>Diagnosis</td>
 										<td className='info-data' colSpan='3'>
 											{diagnosis}
 										</td>
 									</tr>
-									<tr>
+									{/* <tr>
 										<th colSpan='4' className='p0 border-gray-1px' />
-									</tr>
+									</tr> */}
 									<tr>
 										<td className='info-label'>Medication/Treatment:</td>
 										<td className='info-data' colSpan='3'>
 											{medication}
 										</td>
 									</tr>
-									<tr>
+									{/* <tr>
 										<th colSpan='4' className='p0 border-gray-1px' />
-									</tr>
+									</tr> */}
 									<tr>
-										<td className='info-label'>Laboratory Findings / Impression</td>
+										{/* <td className='info-label'>Laboratory Findings / Impression</td>
 										<td className='info-data' colSpan='3'>
 											{laboratory_findings}
-										</td>
+										</td> */}
 									</tr>
-									<tr>
+									{/* <tr>
 										<th colSpan='4' className='p0 border-gray-1px' />
-									</tr>
+									</tr> */}
 									<tr>
 										<td className='info-label'>Health Care Provider:</td>
 										<td className='info-data'>{health_care_provider}</td>

@@ -14,7 +14,7 @@ export default class PatientItem extends Component {
   }
 
   render() {
-    const {last_name, first_name, middle_name, suffix, sex, residential_address, contact_number, id, category} = this.props.data
+    const {last_name, first_name, middle_name, suffix, sex, residential_address, contact_number, family_member, id, category} = this.props.data
     return (
       <tr className="hoverable-tr">
         <td>{this.props.famCode}</td>
@@ -26,6 +26,7 @@ export default class PatientItem extends Component {
         <td>{sex}</td>
         <td>{residential_address}</td>
         <td>{contact_number}</td>
+        <td>{family_member}</td>
         <td>
           {window.localStorage.getItem("ROLE") != "NURSE" &&<ConfirmDialog onClick={this.onDeleteHandler} message="Are you sure you want to delete this patient?" title="Confirm"><span className="delete-icon"><FontAwesomeIcon icon={faTrash}/> </span></ConfirmDialog>}
           <span className="edit-icon"><FontAwesomeIcon icon={faEdit}  onClick={() => window.location.href = "/patients/" + id}/> </span>

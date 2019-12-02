@@ -173,7 +173,27 @@ h3.h3-header{
 }
 
 .search-input{
-  width: calc(50% - 250px) !important;
+  flex: 1;
+}
+
+.search-container{
+  display: flex;
+  flex: 1;
+  /* align-items: center; */
+}
+
+.suggestion-container{
+  width: 50%;
+  background-color: white;
+  position: absolute;
+  margin-top: 50px;
+  padding: 10px;
+  box-shadow: 2px 2px 5px gray;
+  z-index: 100;
+}
+
+.navbar-container{
+  display: flex;
 }
 
 .my-navbar h1 {

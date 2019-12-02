@@ -245,7 +245,7 @@ export default class Table extends Component {
             <th>Mode of Transaction</th>
             <th>Type of Consultation</th>
             <th>Nature of Visit</th>
-            <th>Date of Consultation</th>
+            <th>Date created</th>
             {/* <th>Action</th>             */}
           </tr>
         </thead>
