@@ -59,7 +59,7 @@ export class Login extends Component {
                 <p className="h5 mb-4 login-label">Login</p> 
                 <div className="grey-text">
                   <MDBInput
-                    label="Type your email"
+                    label="Type your username"
                     group
                     type="email"
                     name="email"

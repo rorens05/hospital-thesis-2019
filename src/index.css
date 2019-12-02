@@ -535,6 +535,22 @@ h3.h3-header{
   button{
     display: none !important;
   }
+
+  .statistics-type-container{
+    background-color: black;
+  }
+
+  .search-input{
+    display: none !important;
+  }
+  
+  canvas{
+    width: 100%
+  }
+
+  .sidebar{
+    display: none;
+  }
 }
 @page { size: auto;  margin: 5mm; }
 
