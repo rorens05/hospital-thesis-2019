@@ -70,7 +70,7 @@ export default class Table extends Component {
 				<thead>
 					<tr>
 						<th>Family No.</th>
-						<th>Patient_cdde</th>
+						<th>Patient code</th>
 						<th>Child name</th>
 						<th>Mother's name</th>
 						<th>Fathers's name</th>
