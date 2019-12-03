@@ -12,7 +12,7 @@ export default class FamilyItems extends Component {
 
   onClick = async() => {
     await new Family().destroy(this.props.family.id)
-    window.location.reload()
+    // window.location.reload()
   }
 
   render() {

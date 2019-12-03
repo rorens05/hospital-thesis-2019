@@ -31,7 +31,7 @@ export class Index extends Component {
 			let patientInfo = this.getUserInfo(family, patient, item.patient_id);
 			return {
 				id: item.id,
-				family_no: patientInfo.family.serial_number,
+				family_no: patientInfo.family ? patientInfo.family.serial_number : '',
 				patient_code: patientInfo.patient.category,
 				name: patientInfo.patient.first_name + ' ' + patientInfo.patient.last_name,
 				mode: item.mode,

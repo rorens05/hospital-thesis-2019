@@ -21,6 +21,7 @@ export default class Family extends Base {
 	}
 
 	async destroy(id) {
+		console.log('deleted patient id: ' + id);
 		let general = (await new General().fetchAll()).data.data;
 		let tb = (await new Tb().fetchAll()).data.data;
 		let maternal = (await new Maternal().fetchAll()).data.data;
@@ -47,23 +48,22 @@ export default class Family extends Base {
 
 		console.log({ general, tb, maternal, dental, immunation });
 
-    general.map(async(g) => {
+    await general.map(async(g) => {
       await new General().destroy(g.id)
     })
-    tb.map(async(g) => {
+    await tb.map(async(g) => {
       await new Tb().destroy(g.id)
     })
-    maternal.map(async(g) => {
+    await maternal.map(async(g) => {
       await new Maternal().destroy(g.id)
     })
-    dental.map(async(g) => {
+    await dental.map(async(g) => {
       await new Dental().destroy(g.id)
     })
-    immunation.map(async(g) => {
+    await immunation.map(async(g) => {
       await new Immunation().destroy(g.id)
     })
 
-		console.log('deleted patient id: ' + id);
 		return this.sendRequest(`${constants.PATIENTS}/${id}` ,RequestMethods.DELETE)
 	}
 
