@@ -22,8 +22,12 @@ export default class AddNewFamily extends Component {
 		if (this.props.data){
 			this.setState({ data: this.props.data });
 		} else{
+			let serial = fams[fams.length - 1].serial_number
+			console.log(serial)
+			let number = serial.slice(-6)
+			console.log(parseInt(number))
 			let data = {
-				serial_number: "FM-" + ("00000" + (fams.length + 1)).slice(-6),
+				serial_number: "FM-" + ("00000" + (parseInt(number) +1)).slice(-6),
 				family_name: '',
 				address: '',
 				no_of_members: '0'
