@@ -19,12 +19,20 @@ export default class Family extends Base{
   async destroy(id){
     let patients = (await new Patient().fetchAll()).data.data
     console.log(patients)
-    await patients.map(async(p) => {
+    // patients.forEach(async(p) => {
+    //   if(p.family_id == id){
+    //     console.log({p})
+    //     console.log(await new Patient().destroy(p.id))
+    //   }
+    // });
+
+    for (let index = 0; index < patients.length; index++) {
+      const p = patients[index];
       if(p.family_id == id){
         console.log({p})
         console.log(await new Patient().destroy(p.id))
       }
-    })
+    }
     return await this.sendRequest(`${constants.FAMILIES}/${id}` ,RequestMethods.DELETE)
   }
   async update(data){
